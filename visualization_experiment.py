@@ -16,17 +16,26 @@ def visualize_experiment(test_string,string_to_delete="ana",string_to_search="an
     trie.delete(string_to_delete, visualize_steps=True)
     trie.visualize("post.gv")
     print("Visualization experiment completed")
+
 def lcp_experiment(test_string):
     suffix_array=build_suffix_array(test_string)
     lcp_array=build_lcp_array(test_string, suffix_array)
     max_lcp_value, lcp_string=find_longest_common_prefix(test_string, suffix_array, lcp_array)
-    return max_lcp_value, lcp_string
+
+    trie=SuffixTrie()
+    trie.insert(test_string)
+    lcp=trie.find_lcp()
+    pariwise_lcp=trie.find_pairwise_lcp()
+    print(f"Pairwise LCP: {pariwise_lcp}")
+
+    return max_lcp_value, lcp_string, lcp
 
 def main(test_string,string_to_delete,string_to_search):
     print("Running experiment for Suffix Array and Suffix Trie...")
     visualize_experiment(test_string,string_to_delete,string_to_search)
-    max_lcp_value, lcp_string=lcp_experiment(test_string)
+    max_lcp_value, lcp_string, trie_lcp=lcp_experiment(test_string)
     print(f"Longest Common Prefix: {lcp_string} (Length: {max_lcp_value})")
+    print(f"Longest Common Prefix (Trie): {trie_lcp}")
 
 if __name__ == '__main__':
     default_test_string = "banana"

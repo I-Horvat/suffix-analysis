@@ -41,7 +41,7 @@ class SuffixTrie:
         current=self.root
         prefix=prefix+"$"
 
-        for idx, char in prefix:
+        for char in prefix:
             if char not in current.children:
                 return results
             current=current.children[char]
@@ -101,3 +101,27 @@ class SuffixTrie:
         graph.node(root_id, "ROOT")
         add_edges(self.root, root_id)
         graph.render(output_file, cleanup=True)
+
+    def find_lcp(self):
+        lcp = ""
+        current=self.root
+
+        while len(current.children)==1 and not current.is_end_of_word:
+            char, next_node=next(iter(current.children.items()))
+            lcp+=char
+            current=next_node
+
+        return lcp
+
+    def find_pairwise_lcp(self):
+        max_lcp = ""
+        stack=[(self.root, "")]
+
+        while stack:
+            node, path=stack.pop()
+            if len(node.children)>1:
+                if len(path)>len(max_lcp):
+                    max_lcp=path
+            for char, child in node.children.items():
+                stack.append((child, path + char))
+        return max_lcp
