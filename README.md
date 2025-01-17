@@ -35,9 +35,9 @@ This project provides Python implementations of **Suffix Array** and **Suffix Tr
 
 1. **Clone the repository**:
    ```bash
-   git clone <repository-url>
+   git clone <https://github.com/I-Horvat/suffix-analysis.git>
    cd <suffix-analysis>
-   
+   ```
 
 2. **Create a virtual environment**:
 
@@ -60,4 +60,3 @@ The experiment also find the lcp of the suffix array of the given string or the 
     ```
    
 ---
-
