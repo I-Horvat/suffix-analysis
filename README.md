@@ -48,9 +48,9 @@ This project provides Python implementations of **Suffix Array** and **Suffix Tr
    
 ## Usage
 By default, the `performance_experiment.py` script runs the experiment for various input sizes of randomly generated test strings.
-The `visualization_experiment.py` script visualizes the creation of a suffix trie for a given test string.
+The `visualization_experiment.py` script visualizes the creation of a suffix trie for a given test string in every step of the operation.
 If none are provided it visualizes the creation of a suffix trie for the string "banana", searches and deletes "ana" from the trie.
-The experiment also find the lcp of the suffix array of the given string or the default string "banana".
+The experiment also find the lcp of the suffix array and suffix trie of the given string or the default string "banana".
 
 
 1. **Run the experiments**:
